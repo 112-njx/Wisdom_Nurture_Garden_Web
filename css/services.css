@@ -1,0 +1,116 @@
+.fuwu{margin-bottom:60px;}
+.fw-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:25px;
+  margin-top:30px;
+}
+.fw-item{
+  flex:1 1 calc(33.333% - 20px);
+  background:#c5b59b;
+  padding:25px 20px;
+  text-align:center;
+}
+.fw-item img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+  margin-bottom:15px;
+}
+.fw-item h3{
+  font-size:22px;
+  color:#254367;
+  margin:0 0 15px 0;
+}
+.fw-item p{
+  font-size:16px;
+  color:#254367;
+  margin:0 0 15px 0;
+  line-height:1.5;
+  text-align:left;
+}
+.fw-item .price{
+  font-size:21px;
+  font-weight:bold;
+  color:#d8aa5d;
+  margin-bottom:15px;
+}
+.fw-item .btn1{width:90%;}
+
+.zhuneng{
+  display:flex;
+  gap:80px;
+  align-items:stretch;
+  margin-top:60px;
+}
+.zn-left{
+  flex:1;
+  background:#c5b59b;
+  padding:30px 25px;
+  display:flex;
+  flex-direction:column;
+}
+.zn-left h2{
+  text-align:left;
+  color:#254367;
+  margin-bottom:15px;
+}
+.intro{
+  font-size:18px;
+  color:#254367;
+  margin-bottom:30px;
+  line-height:1.5;
+}
+.gongneng{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+.gn-item{
+  font-size:16px;
+  color:#254367;
+  padding:18px;
+  background:#6590b4;
+  border-radius:6px;
+  line-height:1.4;
+  text-align:left;
+}
+.gn-item strong{
+  font-size:18px;
+  display:block;
+  margin-bottom:8px;
+}
+.zn-right{flex:1;display:flex;align-items:stretch}
+.zn-right img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* 小程序图片滑动展示器 */
+.app-slider{position:relative;max-width:420px;width:100%;margin:0;display:flex;flex-direction:column;align-items:stretch;gap:10px;height:100%}
+.slides-wrap{overflow:hidden;flex:1;height:100%}
+.slides{display:flex;transition:transform .36s ease;height:100%}
+.slide{min-width:100%;box-sizing:border-box;padding:6px;display:flex;flex-direction:column;height:100%}
+.slide img{width:100%;height:100%;object-fit:cover;border-radius:12px;display:block;flex:1 1 auto}
+.slide-caption{text-align:center;margin-top:8px;color:#254367;font-size:14px;flex:0 0 auto}
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(37,67,103,0.9);color:#fff;border:0;border-radius:6px;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1}
+.slider-btn.prev{left:-46px}
+.slider-btn.next{right:-46px}
+.slider-btn:disabled{opacity:.5;cursor:default}
+.slider-dots{position:absolute;left:50%;transform:translateX(-50%);bottom:-12px;display:flex;gap:8px}
+.slider-dots .dot{width:10px;height:10px;border-radius:50%;background:#e6e9ef;border:1px solid rgba(37,67,103,0.06);box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+.slider-dots .dot.active{background:#254367;border-color:#254367}
+
+/* 可选：在 .app-slider 上加类 .no-dots 可以直接隐藏底部点（例如 <div class="app-slider no-dots">） */
+.app-slider.no-dots .slider-dots{display:none}
+
+@media (max-width:900px){
+  .app-slider{max-width:320px}
+  .slider-btn.prev{left:6px}
+  .slider-btn.next{right:6px}
+  .zhuneng{flex-direction:column;gap:24px}
+  .zn-right{width:100%}
+  .zn-left{width:100%}
+}

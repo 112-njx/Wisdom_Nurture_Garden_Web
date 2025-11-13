@@ -1,0 +1,370 @@
+body{
+  margin:0;
+  font-family:"Microsoft YaHei",Arial,sans-serif;
+  background:#c0d0df;
+  color:#254367;
+  font-size:18px;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit;}
+.wrap{width:100%;}
+
+.header{
+  background:#254367;
+  padding:20px 40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.logo img{height:75px;display:block;}
+
+.site-title{
+  font-family: "KaiTi", "楷体", "STKaiti", "Microsoft YaHei", serif;
+  font-weight:800;
+  font-size:40px;
+  color:#ffffff;
+  -webkit-font-smoothing:antialiased;
+  line-height:1;
+  letter-spacing:2px;
+  text-shadow:0 2px 6px rgba(0,0,0,0.36);
+  padding:4px 8px;
+  transition:transform .18s ease, text-shadow .18s ease;
+}
+
+/* 响应式：窄屏时降低字号与字间距并把 header 堆叠 */
+@media (max-width: 768px){
+  .header{flex-direction:column;align-items:center;padding:18px 20px;}
+  .nav{margin-top:12px;}
+  .logo{gap:8px;}
+  .site-title{font-size:22px;letter-spacing:1px;padding:2px 6px;text-align:center}
+}
+.nav{
+  text-align:center;
+}
+.nav a{
+  display:inline-block;
+  color:#c5b59b;
+  font-size:19px;
+  padding:8px 18px;
+  margin:0 10px;
+}
+.nav a.on{
+  color:#d8aa5d;
+  font-weight:bold;
+}
+
+.banner{
+  position:relative;
+  width:100%;
+  height:720px; /* 统一头图高度（已增高一倍） */
+  overflow:hidden;
+}
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* 填充并保持裁切，保证视觉统一 */
+  display:block;
+  position:relative;
+  z-index:2; /* ensure image sits above default pseudo-element */
+  box-shadow: 0 28px 48px rgba(37,67,103,0.09);
+}
+
+/* 顶部头图的下边模糊扩展（默认）：在图片下方产生柔和的过渡，减少突兀感 */
+.banner::after,
+.quanping-lunbo::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -72px; /* 向下延展，已增高一倍 */
+  height: 112px;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(240,201,122,0.06));
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 确保 banner 内的浮层（如 .banner-box / 标题）始终在模糊之上 */
+.banner .banner-box,
+.banner-box,
+.quanping-lunbo .title{
+  z-index: 3;
+  position: relative;
+}
+
+/* 可选：主题黄色粗边条（添加类 .banner--accent 在 .banner 或 .quanping-lunbo 上） */
+.banner--accent::after,
+.quanping-lunbo.banner--accent::after{
+  background: #f0c97a; /* 站点主题黄色 */
+  filter: none;
+  height: 36px; /* 粗条高度（已增高一倍） */
+  bottom: 0; /* 紧贴图片底部 */
+  box-shadow: 0 12px 34px rgba(240,201,122,0.16);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  z-index: 6 !important; /* ensure the accent bar is visible above the image */
+  opacity: 0.98;
+}
+
+@media (max-width:900px){
+  .banner::after,
+  .quanping-lunbo::after{bottom:-40px;height:56px;filter:blur(8px)}
+  .banner--accent::after,
+  .quanping-lunbo.banner--accent::after{height:20px}
+  .banner img{box-shadow: 0 18px 36px rgba(37,67,103,0.08)}
+}
+
+@media (max-width:600px){
+  .banner{height:440px} /* 移动端高度也增高一倍 */
+}
+
+/* 备用类：如果站点想要更强烈的模糊延展效果，可在 banner 上添加 .banner--blur */
+.banner.banner--blur::after{
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(37,67,103,0.06));
+  filter: blur(18px);
+  bottom: -96px;
+  height: 168px;
+  z-index: 2;
+}
+.banner-box{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(197,181,155,0.88);
+  padding:35px 50px;
+  max-width:580px;
+  text-align:center;
+}
+.banner-box h1{
+  margin:0 0 15px 0;
+  font-size:36px;
+  color:#254367;
+  line-height:1.3;
+}
+.banner-box p{
+  margin:0 0 15px 0;
+  font-size:21px;
+  color:#254367;
+}
+.btns{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.btn1{
+  display:inline-block;
+  min-width:170px;
+  min-height:58px;
+  padding:10px 22px;
+  background:#d8aa5d;
+  color:#254367;
+  border-radius:28px;
+  font-weight:bold;
+  font-size:17px;
+  text-align:center;
+  line-height:38px;
+}
+.btn2{
+  display:inline-block;
+  min-width:170px;
+  min-height:58px;
+  padding:10px 22px;
+  background:#6590b4;
+  color:#c5b59b;
+  border-radius:28px;
+  font-weight:bold;
+  font-size:17px;
+  text-align:center;
+  line-height:38px;
+}
+
+.main{
+  max-width:1180px;
+  margin:0 auto;
+  padding:50px 30px 70px 30px;
+}
+.main h2{
+  text-align:center;
+  font-size:34px;
+  color:#254367;
+  margin:0 0 15px 0;
+  font-weight:bold;
+}
+.tips{
+  text-align:center;
+  font-size:19px;
+  color:#254367;
+  margin:0 0 35px 0;
+}
+
+.footer{
+  background:#254367;
+  padding:35px 20px;
+  text-align:center;
+  font-size:15px;
+  color:#c5b59b;
+}
+
+/* 右侧可折叠侧栏（覆盖式弹出） */
+#site-sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:1200;transition:width .28s ease, right .28s ease}
+#site-sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:1200;transition:width .28s ease, right .28s ease}
+/* 折叠态：只显示一条纯色竖条，避免露出半个字 */
+/* 折叠条：显示小 logo，顶部深蓝底色，底部黄色，宽度适中以容纳图标 */
+#site-sidebar .sidebar-collapsed{position:relative;width:44px;height:240px;background:#11263b 0 62%;border-radius:22px 0 0 22px;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,0.12);padding:6px}
+#site-sidebar .sidebar-collapsed img.sidebar-mini-logo{width:28px;height:28px;object-fit:contain;display:block}
+
+/* 指引文字颜色调整为深蓝，保持与站点主色一致 */
+#site-sidebar .sidebar-collapsed::before{color:#ffffff}
+
+/* 为避免侧栏指引遮挡顶部导航，给导航增加右侧外边距（大屏生效） */
+.nav{margin-right:120px}
+
+@media (max-width:900px){
+  /* 窄屏取消额外外边距以防导航换行或重叠 */
+  .nav{margin-right:0}
+}
+
+/* 折叠侧栏：箭头指引与竖向文字提示（保持当前配色） */
+#site-sidebar .sidebar-collapsed::after{
+  content:"";
+  position:absolute;
+  left: -18px;
+  top:50%;
+  transform:translateY(-50%);
+  width:0;height:0;
+  border-top:9px solid transparent;
+  border-bottom:9px solid transparent;
+  border-left:12px solid #f0c97a; /* 黄色，和面板左侧一致 */
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+  opacity:0.98;
+}
+
+#site-sidebar .sidebar-collapsed::before{
+  content:"打开侧栏了解更多";
+  position:absolute;
+  left:-62px; /* 微调以适配底框 */
+  top:50%;
+  transform:translateY(-50%);
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  font-size:13px;
+  color:#254367; /* 指引文字为深蓝 */
+  white-space:nowrap;
+  background: rgba(255,255,255,0.5); /* 半透明白色底框 */
+  padding:6px 8px; /* 内边距，保证底框有间距 */
+  border-radius:8px; /* 圆角 */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* 展开时隐藏指引 */
+#site-sidebar.expanded .sidebar-collapsed::before,
+#site-sidebar.expanded .sidebar-collapsed::after{display:none}
+
+/* 展开态面板：左侧填充纯色条作为视觉承接 */
+#site-sidebar .sidebar-panel{width:360px;height:78vh;max-height:820px;background:#ffffff;border-radius:12px 0 0 12px;padding:24px 18px;box-shadow:0 18px 48px rgba(15,35,60,0.12);overflow:auto;display:flex;flex-direction:column;gap:18px;position:relative}
+#site-sidebar .panel-color{position:absolute;left:0;top:0;bottom:0;width:84px;background:#f0c97a;border-radius:12px 0 0 12px}
+#site-sidebar .panel-content{margin-left:80px;padding-right:10px;padding-top:8px;display:flex;flex-direction:column;gap:18px}
+
+#site-sidebar.collapsed{width:22px}
+#site-sidebar.expanded{width:360px}
+
+/* panel 内容 */
+.sidebar-panel .project-name{font-family: "KaiTi","楷体","STKaiti","Microsoft YaHei",serif;font-size:28px;color:#254367;font-weight:700;line-height:1.2;margin-bottom:4px}
+.sidebar-panel .slogan{font-size:16px;color:#52708f;line-height:1.6;margin-bottom:8px}
+.sidebar-panel .qr-row{display:flex;gap:12px;align-items:flex-start}
+.flip-card{width:150px;height:150px;perspective:800px}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip-card.is-flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.flip-front{background:#eaf3f0;color:#1b6b3a;font-weight:700;font-size:18px;border:2px solid #e6f4ea}
+.flip-back{transform:rotateY(180deg);background:#fff}
+.flip-back img{max-width:92%;max-height:92%;display:block;border-radius:6px}
+.sidebar-panel .qr-caption{font-size:14px;color:#254367;text-align:center;margin-top:6px}
+
+.sidebar-panel .desc{font-size:15px;color:#254367;line-height:1.8;margin-top:6px}
+.sidebar-panel .project-name{font-family: "KaiTi","楷体","STKaiti","Microsoft YaHei",serif;font-size:36px;color:#254367;font-weight:800;line-height:1.3;margin:6px 0}
+.sidebar-panel .slogan{font-size:20px;color:#52708f;line-height:1.9;margin:0}
+.sidebar-panel .qr-row{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.flip-card{width:140px;height:140px;perspective:800px}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip-card.is-flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.flip-front{background:#eaf3f0;color:#1b6b3a;font-weight:800;font-size:20px;border:2px solid #e6f4ea}
+.flip-back{transform:rotateY(180deg);background:#fff}
+.flip-back img{max-width:92%;max-height:92%;display:block;border-radius:6px}
+.sidebar-panel .qr-caption{font-size:15px;color:#254367;text-align:center;margin-top:8px}
+.sidebar-panel .desc{font-size:16px;color:#254367;line-height:1.9;margin-top:8px}
+.sidebar-close{background:transparent;border:0;color:#254367;font-size:18px;cursor:pointer;align-self:flex-end}
+
+/* 响应式：在窄屏上降低宽度 */
+@media (max-width:1000px){
+  #site-sidebar.expanded{width:300px}
+  .flip-card{width:130px;height:130px}
+}
+
+/* 动效：滚动显示 + 轻微倾斜交互 */
+.reveal-card{opacity:0;transform:translateY(18px) scale(0.995);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.2,1);will-change:opacity,transform}
+.reveal-card.visible{opacity:1;transform:translateY(0) scale(1)}
+.interactive-tilt{transition:box-shadow .18s ease,transform .18s ease;will-change:transform}
+.interactive-tilt.hovered{box-shadow:0 18px 40px rgba(37,67,103,0.12);}
+
+/* 限制动画在低性能设备上 */
+@media (prefers-reduced-motion: reduce){
+  .reveal-card{transition:none!important;opacity:1;transform:none}
+}
+
+/* 让 reveal-card 在添加 is-hover 时表现为首页同样的轻微放大（不倾斜） */
+.reveal-card.is-hover, .reveal-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 14px 30px rgba(37,67,103,0.12)}
+
+/* 全局：统一各页主体卡片风格（与首页一致） */
+.main .fw-item,
+.main .ys-item,
+.main .yz-item,
+.main .al-item,
+.main .rh-item,
+.main .hb-item,
+.main .zn-left,
+.main .jk-item,
+.pj-box,
+.pingjia2 .pj-box{
+  background:#ffffff !important;
+  color:#254367 !important;
+  border-radius:10px !important;
+  box-shadow:0 10px 30px rgba(37,67,103,0.06) !important;
+  padding:22px !important;
+}
+
+/* 保持卡片内图片和按钮的可视性 */
+.main .fw-item img,
+.main .al-item img,
+.main .yz-item img,
+.main .pj-right img{border-radius:8px;display:block}
+
+/* 功能块（gn-item 等）保留辅助色，但使用白底容器 */
+.gn-item{background:#f7f8fa;color:#254367;padding:14px;border-radius:8px}
+
+@media (max-width:900px){
+  .main .fw-item, .main .rh-item, .main .jk-item{flex:1 1 100%}
+}
+
+/* 健康页 pingjia2：左右图文等高，图片为高度基准 */
+.pingjia2{display:flex;gap:24px;align-items:stretch;background:#ffffff;padding:18px;border-radius:12px;box-shadow:0 10px 28px rgba(37,67,103,0.06)}
+.pingjia2 .pj-left{flex:1;display:flex;align-items:center}
+.pingjia2 .pj-left .pj-box{width:100%;display:flex;flex-direction:column;justify-content:center;padding:0}
+.pingjia2 .pj-right{flex:0 0 320px;display:flex;align-items:stretch}
+.pingjia2 .pj-right img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block}
+
+@media (max-width:900px){
+  .pingjia2{flex-direction:column}
+  .pingjia2 .pj-right{flex:1}
+  .pingjia2 .pj-right img{height:auto}
+}
+

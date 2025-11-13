@@ -1,0 +1,145 @@
+.jieshao{margin-bottom:60px;}
+.js-box{
+  max-width:980px;
+  margin:30px auto 0 auto;
+  padding:35px 30px;
+  background:#c5b59b;
+}
+.js-box p{
+  font-size:18px;
+  color:#254367;
+  line-height:1.6;
+  margin:0 0 20px 0;
+  text-indent:2em;
+}
+.js-box p:last-child{margin-bottom:0;}
+
+.anli2{margin-bottom:60px;}
+.anli2 .anli-list{
+  display:flex;
+  gap:40px;
+  margin-top:30px;
+}
+.anli2 .al-item{
+  flex:1;
+  background:#c5b59b;
+  padding:28px 23px;
+}
+.anli2 .al-item img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+  margin-bottom:15px;
+}
+.anli2 .al-item h3{
+  font-size:21px;
+  color:#254367;
+  margin:0 0 15px 0;
+}
+.anli2 .al-item p{
+  font-size:17px;
+  color:#254367;
+  line-height:1.5;
+  margin:0;
+}
+
+.lianxi{margin-top:60px;}
+.lx-wrap{
+  display:flex;
+  gap:50px;
+  margin-top:30px;
+}
+.lx-left{
+  flex:1;
+  background:#c5b59b;
+  padding:30px 25px;
+}
+.form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.input-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.input-group label{
+  font-size:17px;
+  color:#254367;
+  font-weight:bold;
+}
+.input-group input{
+  padding:14px;
+  font-size:16px;
+  background:#c0d0df;
+  color:#254367;
+  border:none;
+  outline:none;
+  border-radius:6px;
+}
+.input-group textarea{
+  padding:14px;
+  font-size:16px;
+  background:#c0d0df;
+  color:#254367;
+  border:none;
+  outline:none;
+  border-radius:6px;
+  min-height:110px;
+  resize:vertical;
+}
+.submit{
+  padding:14px 35px;
+  font-size:17px;
+  background:#d8aa5d;
+  color:#254367;
+  text-align:center;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.lx-right{
+  flex:1;
+  background:#c5b59b;
+  padding:30px 25px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+.info-item{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.info-item .label{
+  font-size:17px;
+  color:#254367;
+  font-weight:bold;
+}
+.info-item .value{
+  font-size:17px;
+  color:#254367;
+}
+.qr{
+  text-align:center;
+  margin-top:15px;
+}
+.qr img{
+  width:150px;
+  height:auto;
+  display:inline-block;
+  margin-bottom:8px;
+}
+.qr p{
+  font-size:15px;
+  color:#254367;
+  margin:0;
+}
+
+/* 两个二维码并列显示（公众号 + 小程序） */
+.qr-row{display:flex;gap:20px;align-items:flex-start;justify-content:center}
+.qr .mini-preview{margin-top:8px}
+.qr .mini-preview img{width:120px;border-radius:8px;display:block;margin:0 auto}

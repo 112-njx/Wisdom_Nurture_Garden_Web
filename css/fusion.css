@@ -1,0 +1,104 @@
+.ronghe{margin-bottom:60px;}
+.rh-list{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  margin-top:30px;
+}
+.rh-row{
+  display:flex;
+  gap:22px;
+  align-items:stretch; /* 统一高度 */
+}
+
+/* 文本块为 4:3 比例，图片为 1:1；在窄屏上堆叠 */
+.rh-text{
+  flex:1 1 60%;
+  background:#ffffff;
+  padding:28px 24px;
+  border-radius:10px;
+  box-shadow:0 10px 30px rgba(37,67,103,0.06);
+  color:#254367;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.rh-text h3{font-size:22px;margin:0 0 12px 0}
+.rh-text p{font-size:16px;line-height:1.6;margin:0}
+
+.rh-figure{
+  flex:0 0 36%;
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
+}
+.rh-figure img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
+  display:block;
+}
+
+/* 交错排列：偶数行反向 */
+.rh-list .rh-row:nth-child(2n){
+  flex-direction:row-reverse;
+}
+
+/* 标题居中并恢复下划线风格 */
+.rh-text h3{
+  text-align:center;
+  margin:0 0 12px 0;
+  position:relative;
+}
+.rh-text h3::after{
+  content:"";
+  display:block;
+  width:48px;
+  height:4px;
+  background:#f0c97a;
+  border-radius:2px;
+  margin:8px auto 0;
+}
+
+@media (max-width:900px){
+  .rh-row{flex-direction:column}
+  .rh-figure{width:100%}
+  .rh-figure img{aspect-ratio:16/9}
+  .rh-text{aspect-ratio:auto;padding:18px}
+}
+
+.huoban{margin-top:60px;}
+.jieshao{
+  font-size:18px;
+  color:#254367;
+  line-height:1.6;
+  margin:20px 0 35px 0;
+  text-align:center;
+}
+.hb-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  justify-content:center;
+  margin-top:30px;
+}
+.hb-item{
+  flex:0 0 auto;
+  display:inline-block; /* allow anchor styling */
+  padding:20px 30px;
+  background:#c5b59b;
+  font-size:19px;
+  color:#254367;
+  text-align:center;
+  font-weight:bold;
+  text-decoration:none;
+  border-radius:8px;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  cursor:pointer;
+}
+.hb-item:hover, .hb-item:focus{
+  transform:translateY(-6px);
+  box-shadow:0 12px 28px rgba(37,67,103,0.08);
+  background:#d4c3a8;
+}

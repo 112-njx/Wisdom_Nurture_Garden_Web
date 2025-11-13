@@ -1,0 +1,164 @@
+.youshi{margin-bottom:60px;}
+.youshi-list{
+  display:flex;
+  gap:24px;
+  margin-top:30px;
+}
+
+/* 首页节标题：与其他页面标题层级统一，独立于卡片交互 */
+.section-header{text-align:center;margin-bottom:18px;position:relative;z-index:5}
+.section-header h2{margin:0}
+.section-header .tips{margin:6px 0 0 0}
+
+/* 全屏轮播样式（与示例保持一致，覆盖首页顶部） */
+.quanping-lunbo{position:relative;width:100vw;height:80vh;overflow:hidden} /* 缩小轮播高度，原为 100vh */
+.lunbo-container{position:relative;width:100%;height:100%}
+.lunbo-item{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1.5s ease-in-out;background-size:cover;background-position:center}
+.lunbo-item.active{opacity:1;z-index:1}
+
+/* 暗角/遮罩（使用伪元素提高兼容性） */
+.lunbo-container::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.28) 100%);pointer-events:none;mix-blend-mode:multiply}
+
+.title{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2}
+
+/* ---------- 顶部滚动通告条 ---------- */
+.site-announcement{background:#fffaf0;padding:8px 0;border-top:1px solid rgba(37,67,103,0.04);overflow:hidden}
+.site-announcement .ann-wrap{max-width:1200px;margin:0 auto;padding:0 18px;overflow:hidden}
+.site-announcement .ann-track{display:inline-block;white-space:nowrap;transform:translateX(var(--ann-start,40%));animation:marquee 18s linear infinite}
+.site-announcement{--ann-start:40%;/* 调整此变量可改变通告进入可视区的起始位置，值越小首条越早出现（例如 20% 更早） */}
+.site-announcement .ann-item{display:inline-block;padding:0 40px;color:#254367;font-size:15px;vertical-align:middle}
+.site-announcement .ann-item strong{color:#254367;margin-right:8px}
+.site-announcement:hover .ann-track{animation-play-state:paused}
+
+@keyframes marquee{0%{transform:translateX(var(--ann-start,40%))}100%{transform:translateX(-100%)}}
+
+@media (max-width:900px){
+  .quanping-lunbo{height:34vh}
+  .site-announcement .ann-item{font-size:14px;padding:0 26px}
+}
+
+
+/* ---------- SVG 标题字体与动画（可在此处调整） ---------- */
+/*
+  编辑说明：
+  - 若要改变标题大小，请编辑下面 `.logotext { font-size: ... }` 的 vw 值（视口单位），
+    以及 media query 中的 `font-size`（大屏固定像素）。
+  - `stroke-width` 控制描边粗细，`letter-spacing` 控制字间距。
+  - `animation: drawing Ns` 控制描边动画时长（单位 s），可改为更长或更短。
+*/
+.logotext{
+  font-family:'KaiTi','楷体',"STKaiti", 'Microsoft YaHei', serif;
+  font-size: 100vw; /* 基于视口的响应式大小，建议在 4vw - 10vw 之间微调 */
+  /* 在较大屏幕上使用固定像素值以避免过大 */
+  stroke:url(#color-qp);
+  stroke-width: 8px; /* 描边宽度，越大描边越粗 */
+  stroke-dasharray:10 800;
+  stroke-dashoffset:10;
+  animation:drawing 6s linear 0s forwards; /* 把描边动画放慢到 6s，按需调整 */
+  fill:#ffffff00;
+  letter-spacing:0.18em; /* 字间距，按需微调 */
+  text-shadow:0 0 12px rgba(55,6,44,0.65);
+}
+
+@media (min-width:768px){
+  .logotext{font-size:100px} /* 桌面最大尺寸，按需修改 */
+}
+
+
+@keyframes drawing{to{stroke-dasharray:2500;stroke-dashoffset:0}}
+
+.ys-item{
+  flex:1;
+  background:#ffffff;
+  padding:28px 22px;
+  text-align:left;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(37,67,103,0.08);
+  transition:transform .18s ease, box-shadow .18s ease;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column; /* 使内容垂直排列 */
+  min-height:320px; /* 保持卡片高度一致，便于底部对齐 */
+}
+.ys-item:hover, .ys-item.is-hover{transform:translateY(-6px) scale(1.02);box-shadow:0 14px 30px rgba(37,67,103,0.12)}
+.ys-item .icon{margin-bottom:12px;text-align:center}
+.ys-item .icon i{font-size:56px;color:#254367;}
+.ys-item h3{
+  font-size:22px;
+  color:#254367;
+  margin:8px 0 14px 0;
+}
+.ys-item p{
+  font-size:16px;
+  color:#254367;
+  margin:0 0 12px 0;
+  line-height:1.6;
+}
+.ys-item .tag{
+  display:inline-block;
+  padding:8px 18px;
+  background:#f0c97a; /* 用黄色作为辅助色 */
+  color:#254367;
+  font-size:15px;
+  border-radius:18px;
+  margin-top:auto; /* 推至卡片底部以统一高度参照 */
+  cursor:pointer;
+  text-align:center;
+}
+
+/* 评价区：外框和连接线 */
+.pingjia{
+  margin-bottom:60px;
+}
+.pj-wrap{
+  display:flex;
+  gap:24px;
+  align-items:center;
+  justify-content:center;
+  background:#ffffff;
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 10px 28px rgba(37,67,103,0.06);
+}
+.pj-left{flex:1;}
+.pj-right{flex:0 0 320px;}
+.pj-box{
+  background:transparent;
+  padding:22px 18px;
+}
+.pj-box p{
+  font-size:18px;
+  color:#254367;
+  line-height:1.6;
+  margin:0 0 12px 0;
+}
+.author{
+  font-size:15px;
+  color:#254367;
+  text-align:right;
+}
+.pj-right img{width:100%;height:auto;display:block;border-radius:8px}
+.pj-divider{width:1px;height:80%;background:linear-gradient(#e6e9ef,#f6f6f6);margin:0 6px}
+
+.hezuo{
+  background:#f7f8fa; /* 变为浅色背景，黄色为辅助 */
+  padding:44px 35px;
+  text-align:center;
+}
+.hezuo h2{color:#254367;margin-bottom:8px}
+.desc{font-size:18px;color:#254367;margin:0 0 14px 0}
+.intro{font-size:16px;color:#254367;margin:0 0 20px 0;line-height:1.6}
+.hezuo .btns{display:inline-flex;gap:14px;align-items:center;position:relative}
+.hezuo .btn1{background:#f0c97a;color:#254367}
+.hezuo .btn2{background:#6590b4;color:#fff}
+.btn-indicator{position:absolute;height:8px;border-radius:8px;bottom:-12px;left:0;background:linear-gradient(90deg,#f0c97a,#ffd88a);transition:left .28s cubic-bezier(.2,.9,.2,1),width .28s;box-shadow:0 6px 18px rgba(240,201,122,0.12)}
+
+/* 通用交互类（供 JS 添加/移除） */
+.interactive-card{will-change:transform}
+
+@media (max-width: 900px){
+  .youshi-list{flex-direction:column}
+  .pj-wrap{flex-direction:column;align-items:stretch}
+  .pj-right{flex:1}
+  .pj-divider{display:none}
+}
